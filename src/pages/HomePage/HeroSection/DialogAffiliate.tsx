@@ -1,9 +1,12 @@
-import React from "react";
-import { Button, Dialog, DialogBody, DialogFooter } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-import copy from 'copy-text-to-clipboard'
+import {
+  Button,
+  Dialog,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
+import copy from "copy-text-to-clipboard";
 import { TSizeOfDialog } from "../../../utils/types";
-import CustomDialogHeader from "../../../components/CustomDialogHeader";
 
 // ----------------------------------------------------------------------------
 
@@ -16,26 +19,29 @@ interface IProps {
 
 // ----------------------------------------------------------------------------
 
-export default function DialogAffiliate({ dialogOpened, setDialogOpened, sizeOfDialog, affiliateLink }: IProps) {
+export default function DialogAffiliate({
+  dialogOpened,
+  setDialogOpened,
+  sizeOfDialog,
+  affiliateLink,
+}: IProps) {
   const handleCopy = () => {
-    copy(affiliateLink)
-  }
+    copy(affiliateLink);
+  };
 
   const handleDialog = () => {
-    setDialogOpened(!dialogOpened)
-  }
+    setDialogOpened(!dialogOpened);
+  };
 
   return (
     <Dialog size={sizeOfDialog} open={dialogOpened} handler={handleDialog}>
-      <CustomDialogHeader title="Affiliate Link" handleDialog={handleDialog} />
       <DialogBody className="px-6" divider>
         <div className="flex flex-col gap-4">
           <p className="text-gray-700 text-sm font-bold">
-            Please copy the following link and share it to others. You will get 4% of ECO token which they purchase as reward.
+            Please copy the following link and share it to others. You will get
+            4% of ECO token which they purchase as reward.
           </p>
-          <p className="text-gray-700 break-words">
-            {affiliateLink}
-          </p>
+          <p className="text-gray-700 break-words">{affiliateLink}</p>
         </div>
       </DialogBody>
       <DialogFooter>
@@ -48,5 +54,5 @@ export default function DialogAffiliate({ dialogOpened, setDialogOpened, sizeOfD
         </Button>
       </DialogFooter>
     </Dialog>
-  )
+  );
 }

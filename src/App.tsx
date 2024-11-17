@@ -1,19 +1,19 @@
-import React, { Suspense } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Web3Modal } from "@web3modal/react";
 import {
   EthereumClient,
   w3mConnectors,
   w3mProvider,
 } from "@web3modal/ethereum";
-import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet, goerli } from "wagmi/chains";
-import { AlertMessageProvider } from "./contexts/AlertMessageContext";
-import { LoadingProvider } from "./contexts/LoadingContext";
-import { MobileMenuProvider } from "./contexts/MobileMenuContext";
+import { Web3Modal } from "@web3modal/react";
+import { Suspense } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { WagmiConfig, configureChains, createClient } from "wagmi";
+import { goerli, mainnet } from "wagmi/chains";
 import Routes from "./Routes";
 import Loading from "./components/Loading";
 import { AffiliateProvider } from "./contexts/AffiliateContext";
+import { AlertMessageProvider } from "./contexts/AlertMessageContext";
+import { LoadingProvider } from "./contexts/LoadingContext";
+import { MobileMenuProvider } from "./contexts/MobileMenuContext";
 
 // -----------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ const { provider, webSocketProvider } = configureChains(chains, [
 
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: w3mConnectors({ projectId, version: 1, chains }),
+  connectors: w3mConnectors({ projectId, chains }),
   provider,
   webSocketProvider,
 });
