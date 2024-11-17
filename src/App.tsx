@@ -1,4 +1,8 @@
-import { EthereumClient, w3mProvider } from "@web3modal/ethereum";
+import {
+  EthereumClient,
+  w3mConnectors,
+  w3mProvider,
+} from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -24,6 +28,7 @@ const { provider, webSocketProvider } = configureChains(chains, [
 
 const wagmiClient = createClient({
   autoConnect: true,
+  connectors: w3mConnectors({ projectId, version: 1, chains }),
   provider,
   webSocketProvider,
 });
